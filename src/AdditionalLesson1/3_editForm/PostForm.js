@@ -106,18 +106,18 @@ class PostForm extends Component {
     );
   }
 
-  // getSnapshotBeforeUpdate(prevProps, prevState) {
-  //   this.log("getSnapshotBeforeUpdate", {
-  //     props: { ...this.props },
-  //     state: { ...this.state },
-  //     prevProps: {...prevProps},
-  //     prevState: {...prevState},
-  //   });
-  //
-  //   return {
-  //     data: "hello from getSnapshotBeforeUpdate"
-  //   }
-  // }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    this.log("getSnapshotBeforeUpdate", {
+      props: { ...this.props },
+      state: { ...this.state },
+      prevProps: {...prevProps},
+      prevState: {...prevState},
+    });
+
+    return {
+      data: "hello from getSnapshotBeforeUpdate"
+    };
+  }
 
   componentDidMount() {
     this.log("componentDidMount");

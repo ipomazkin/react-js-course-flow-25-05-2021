@@ -18,13 +18,15 @@ class ResponsiveContainer extends Component {
     this.log("constructor");
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   classComponentLogger.bind({constructor: ResponsiveContainer})("getDerivedStateFromProps", {
-  //     props, state
-  //   }, { level: 2, color: "blue" }, );
-  //   return null;
-  // }
-
+  static getDerivedStateFromProps(props, state) {
+    classComponentLogger.bind({constructor: ResponsiveContainer})("getDerivedStateFromProps", {
+      props, state
+    }, { level: 2, color: "blue" }, );
+    return {
+      isMobile: window.innerWidth <= props.mobileBreakpoint,
+    };
+  }
+  //
   // shouldComponentUpdate(nextProps, nextState) {
   //   this.log("shouldComponentUpdate", {
   //     props: { ...this.props },
@@ -33,7 +35,7 @@ class ResponsiveContainer extends Component {
   //     nextState: {...nextState},
   //   });
   //
-  //   return true;
+  //   return false;
   // }
 
   handleWindowResize = () => {

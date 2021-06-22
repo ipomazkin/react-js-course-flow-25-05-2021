@@ -7,7 +7,8 @@ class ExampleRenderer extends Component {
     super(props);
 
     this.state = {
-       isShow: false,
+      isShow: false,
+      isVisible: true,
     };
 
     this.log = makeClassComponentLogger(this, { level: 1 });
@@ -54,16 +55,15 @@ class ExampleRenderer extends Component {
             <button onClick={() => this.setState({ isShow: !this.state.isShow })}>
               {this.state.isShow ? 'Hide' : 'Show'}
             </button>
+            <button onClick={() => this.setState({ isVisible: !this.state.isVisible })}>
+              {this.state.isVisible ? 'Visible' : 'Not visible'}
+            </button>
           </div>
           <div>
             {this.state.isShow && (
               <ResponsiveContainer
-                mobile={(
-                  <div>This is a mobile content</div>
-                )}
-                desktop={(
-                  <div>This is a desktop content</div>
-                )}
+                mobile="mobile"
+                desktop="desktop"
               />
             )}
           </div>
@@ -72,32 +72,32 @@ class ExampleRenderer extends Component {
     );
   }
 
-  // getSnapshotBeforeUpdate(prevProps, prevState) {
-  //   this.log("getSnapshotBeforeUpdate", {
-  //     props: { ...this.props },
-  //     state: { ...this.state },
-  //     prevProps: {...prevProps},
-  //     prevState: {...prevState},
-  //   });
-  //
-  //   return {
-  //     data: "hello from getSnapshotBeforeUpdate"
-  //   }
-  // }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    this.log("getSnapshotBeforeUpdate", {
+      props: { ...this.props },
+      state: { ...this.state },
+      prevProps: {...prevProps},
+      prevState: {...prevState},
+    });
+
+    return {
+      data: "hello from getSnapshotBeforeUpdate"
+    }
+  }
 
   componentDidMount() {
     this.log("componentDidMount");
   }
-  //
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   this.log("componentDidUpdate", {
-  //     props: { ...this.props },
-  //     state: { ...this.state },
-  //     prevProps: {...prevProps},
-  //     prevState: {...prevState},
-  //     snapshot: snapshot,
-  //   });
-  // }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.log("componentDidUpdate", {
+      props: { ...this.props },
+      state: { ...this.state },
+      prevProps: {...prevProps},
+      prevState: {...prevState},
+      snapshot: snapshot,
+    });
+  }
 
   componentWillUnmount() {
     this.log("componentWillUnmount");

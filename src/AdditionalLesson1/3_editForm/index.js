@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { makeClassComponentLogger, classComponentLogger } from "../../utils/logger";
 import Posts from "./Posts";
 
-class ExampleRenderer extends Component {
+export class ExampleRenderer extends Component {
   constructor(props) {
     super(props);
 
