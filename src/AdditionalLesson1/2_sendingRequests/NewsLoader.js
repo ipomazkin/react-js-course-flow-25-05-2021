@@ -38,7 +38,7 @@ class NewsLoader extends Component {
   makeRequest() {
     this.log("makeRequest");
 
-    axios.get("https://60bb880442e1d00017620c95.mockapi.io/Comment")
+    axios.get("https://60bb880442e1d00017620c95.mockapi.io/Posts")
       .then((res) => {
         this.log("makeRequest - response success", {
           res,
